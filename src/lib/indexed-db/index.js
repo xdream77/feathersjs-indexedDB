@@ -1,9 +1,8 @@
-import { curry } from 'ramda';
+import feathers from '@feathersjs/feathers';
 import createService from './service.js';
+const local = feathers();
 
-export default curry((name, app) => {
-    const options = {
-        name,
-    };
-    app.use(name, createService(options));
-});
+const makeService = name => local.use(name, createService({ name }));
+
+export const makeLocalServices = names => (names.map(makeService), local);
+

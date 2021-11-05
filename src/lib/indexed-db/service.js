@@ -10,7 +10,7 @@
 
 import localforage from 'localforage';
 import { nanoid } from 'nanoid';
-import { whereEq, curry, mergeDeepRight, pick, isEmpty, map } from 'ramda';
+import { whereEq, curry, mergeDeepRight, pick, isEmpty, map, update } from 'ramda';
 import { isArray, returnArray, toArray, returnKeyValue } from '../util/index.js';
 
 
@@ -45,6 +45,15 @@ const pickProperties = curry((selection, data) =>
 const updateAllItems = curry((data, store, items) =>
     Promise.all(items.map(item => saveSingle(item.id, store, data)))
 );
+const updateItems = curry((data, items) =>
+    items.map(({id}) => ({ id, ...data }))
+);
+
+const saveItems = curry((store, dataArray) => {
+
+});
+
+
 const patchAllItems = curry((data, store, items) => 
     Promise.all(items.map(({id, ...item}) => saveSingle(id, store, mergeDeepRight(item, data))))
 );
@@ -80,6 +89,8 @@ export default ({ name }) => {
 
         update: (id, data, params = { query: {} }) =>
             getDbItems(store, id, params)
+                /* .then(updateItems(data))
+                .then(saveItems(store)) */
                 .then(updateAllItems(data, store))
                 .catch(returnArray)
         ,

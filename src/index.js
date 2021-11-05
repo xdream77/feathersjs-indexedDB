@@ -1,8 +1,7 @@
-import feathers from '@feathersjs/feathers';
-import service from './lib/indexed-db/index.js';
-const local = feathers();
+import { makeLocalServices } from './lib/indexed-db/index.js';
 
-local.configure(service('messages'));
+const local = makeLocalServices(['messages', 'users']);
+//console.log(local[0]);
 
 /* local.service('messages')
     .remove(null, { query: { name: 'Kotthaus' } })
@@ -11,7 +10,6 @@ local.configure(service('messages'));
 /* local.service('messages')
     .update('iEfclxSyctAw9-J4ORfrF', {hello: 'Andre', name: 'Kotthaus', details: { age: 44, color: 'white' }})
     .then(console.log); */
-
 
 /* local.service('messages')
     .find({ query: {hello: 'Andre', name: 'Kotthaus', details: { age: 44, color: 'white' }}})
@@ -29,6 +27,6 @@ local.configure(service('messages'));
     ])
     .then(console.log); */
 
-local.service('messages')
+local.service('users')
     .patch('GIjDvniBd4rZGywgESjy-', { name: 'PATCHED', details: { color: 'red', box: 'bordee' }})
     .then(console.log);
