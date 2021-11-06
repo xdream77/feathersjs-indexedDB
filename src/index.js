@@ -11,9 +11,9 @@ const local = makeLocalServices(['messages', 'users']);
     .update('iEfclxSyctAw9-J4ORfrF', {hello: 'Andre', name: 'Kotthaus', details: { age: 44, color: 'white' }})
     .then(console.log); */
 
-/* local.service('messages')
-    .find({ query: {hello: 'Andre', name: 'Kotthaus', details: { age: 44, color: 'white' }}})
-    .then(console.log); */
+local.service('messages')
+    .find({ query: {$limit: 2, $skip: 3,  $select: ['hello', 'name'], hello: {$in: ['Andre', 'Thomas']} }})
+    .then(console.log);
 
 /* local.service('messages')
     .get('iEfclxSyctAw9-J4ORfrF', {$select: ['details']})
@@ -27,6 +27,6 @@ const local = makeLocalServices(['messages', 'users']);
     ])
     .then(console.log); */
 
-local.service('users')
+/* local.service('users')
     .patch('GIjDvniBd4rZGywgESjy-', { name: 'PATCHED', details: { color: 'red', box: 'bordee' }})
-    .then(console.log);
+    .then(console.log); */
