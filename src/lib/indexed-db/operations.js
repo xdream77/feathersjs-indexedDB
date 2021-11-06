@@ -83,6 +83,9 @@ export const patchAllItems = curry((data, store, items) =>
 );
  
 export const getDbItems = (id, params, store) => 
-    id 
-        ? store.getItem(id).then(returnKeyValue(id)).then(toArray)
-        : findInStore(store, params);
+    !id 
+        ? findInStore(store, params)
+        : store
+            .getItem(id)
+            .then(returnKeyValue(id))
+            .then(toArray);
