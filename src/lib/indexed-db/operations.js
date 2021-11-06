@@ -1,10 +1,10 @@
 /**
  * 
  * Documentation:
+ *  -> feathers adapter-commons: https://github.com/feathersjs/feathers/tree/dove/packages/adapter-commons
  *  -> nanoid: https://github.com/ai/nanoid#readme
+ *  -> sift: https://www.npmjs.com/package/sift
  *  -> ramda: https://ramdajs.com/docs/
- *  -> localforage: https://localforage.github.io/localForage/
- *  -> feathers service -> https://docs.feathersjs.com/api/services.html#service-methods
  * 
  */
 

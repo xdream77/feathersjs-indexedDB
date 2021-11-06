@@ -1,7 +1,6 @@
 /**
  * 
  * Documentation:
- *  -> nanoid: https://github.com/ai/nanoid#readme
  *  -> ramda: https://ramdajs.com/docs/
  *  -> localforage: https://localforage.github.io/localForage/
  *  -> feathers service -> https://docs.feathersjs.com/api/services.html#service-methods
