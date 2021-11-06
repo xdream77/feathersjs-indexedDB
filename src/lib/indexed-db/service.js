@@ -38,19 +38,19 @@ export default ({ name }) => {
         ,
 
         update: (id, data, params) =>
-            getDbItems(store, id, params)
+            getDbItems(id, params, store)
                 .then(updateAllItems(data, store))
                 .catch(returnArray)
         ,
 
         patch: (id, data, params) => 
-            getDbItems(store, id, params)
+            getDbItems(id, params, store)
                 .then(patchAllItems(data, store))
                 .catch(returnArray)
         ,
         
         remove: (id, params) => 
-            getDbItems(store, id, params)
+            getDbItems(id, params, store)
                 .then(map(returnKeyValue(id)))
                 .then(removeAllItems(store))
                 .catch(returnArray)
