@@ -32,7 +32,9 @@ export default ({ name }) => {
         create: (data) => 
             isArray(data)
                 ? Promise.all(data.map(item => saveSingle(undefined, store, item)))
-                : saveSingle(undefined, store, data).then(toArray)
+                : saveSingle(undefined, store, data)
+                    .then(toArray)
+                    .catch(returnArray)
         ,
 
         update: (id, data, params) =>

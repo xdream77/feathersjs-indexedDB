@@ -38,7 +38,7 @@ const applyFilters = curry((filters, result) => {
 });
 
 export const findInStore = (store, params) => {
-    const { query, filters, paginate } = adapter.filterQuery(params);
+    const { query, filters } = adapter.filterQuery(params);
 
     const result = {
         total: 0,
@@ -46,7 +46,6 @@ export const findInStore = (store, params) => {
         skip : filters.$skip || 0,
         data : []
     };
-
 
     const items = store
         .iterate((dbItem, key) => {
@@ -58,7 +57,6 @@ export const findInStore = (store, params) => {
         .then(always(result))
         .then(setResultsTotal)
         .then(applyFilters(filters));
-        
 };
  
 export const saveSingle = curry((key = nanoid(), store, item) =>
@@ -84,12 +82,7 @@ export const updateAllItems = curry((data, store, items) =>
 export const updateItems = curry((data, items) =>
     items.map(({id}) => ({ id, ...data }))
 );
- 
-export const saveItems = curry((store, dataArray) => {
- 
-});
- 
- 
+
 export const patchAllItems = curry((data, store, items) => 
     Promise.all(items.map(({id, ...item}) => saveSingle(id, store, mergeDeepRight(item, data))))
 );
