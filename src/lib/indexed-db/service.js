@@ -22,6 +22,7 @@ export default ({ name }) => {
     return {
         get: (id, { $select = [] }) =>
             store.getItem(id)
+                .then(returnKeyValue(id))
                 .then(pickProperties($select))
                 .catch(always({}))
         ,

@@ -15,10 +15,10 @@ const local = makeLocalServices(['messages', 'users']);
     .find({ query: {$limit: 3, $skip: 1, hello: {$in: ['Thomas', 'Andre']} }})
     .then(console.log); */
 
-/* local.service('messages')
-    .get('iEfclxSyctAw9-J4ORfrF', {$select: ['details']})
+local.service('messages')
+    .get('ZaIBf', {$select: ['details', 'id']})
     .then(console.log);
- */
+
 /* local.service('messages')
     .create([
         {hello: 'Andre', name: 'Kotthaus', details: { age: 44, color: 'white' }},
@@ -32,11 +32,11 @@ const local = makeLocalServices(['messages', 'users']);
     .then(console.log); */
 
 
-local.service('messages')
+/* local.service('messages')
     .patch(null, { name: 'PATTY', details: { color: 'red', box: 'bordee' }}, { query: {$limit: 3, $skip: 1, hello: {$in: ['Thomas', 'Andre']} }});
     
 local.service('messages').on('patched', (data) => {
     console.log('Patched Data: ', data);
-});
+}); */
 
 
