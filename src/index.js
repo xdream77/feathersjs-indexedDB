@@ -1,4 +1,4 @@
-import { makeLocalServices } from './lib/indexed-db/index.js';
+import { makeLocalServices } from './lib/index.js';
 
 const local = makeLocalServices(['messages', 'users']);
 //console.log(local[0]);

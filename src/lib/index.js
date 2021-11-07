@@ -5,4 +5,3 @@ const local = feathers();
 const makeService = name => local.use(name, createService({ name }));
 
 export const makeLocalServices = names => (names.map(makeService), local);
-

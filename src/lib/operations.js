@@ -1,18 +1,18 @@
 /**
  * 
  * Documentation:
- *  -> feathers adapter-commons: https://github.com/feathersjs/feathers/tree/dove/packages/adapter-commons
- *  -> nanoid: https://github.com/ai/nanoid#readme
  *  -> sift: https://www.npmjs.com/package/sift
+ *  -> nanoid: https://github.com/ai/nanoid#readme
  *  -> ramda: https://ramdajs.com/docs/
+ *  -> feathers adapter-commons: https://github.com/feathersjs/feathers/tree/dove/packages/adapter-commons
  * 
  */
 
+import sift from 'sift';
 import { nanoid } from 'nanoid';
 import { curry, mergeDeepRight, pick, isEmpty, always, assoc } from 'ramda';
-import { toArray, returnKeyValue, isArray } from '../util/index.js';
 import { sorter, AdapterService } from '@feathersjs/adapter-commons';
-import sift from 'sift';
+import { toArray, returnKeyValue, isArray } from './util.js';
  
 const adapter = new AdapterService();
 

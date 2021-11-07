@@ -1,15 +1,15 @@
 /**
  * 
  * Documentation:
- *  -> ramda: https://ramdajs.com/docs/
  *  -> localforage: https://localforage.github.io/localForage/
+ *  -> ramda: https://ramdajs.com/docs/
  *  -> feathers service -> https://docs.feathersjs.com/api/services.html#service-methods
  * 
  */
 
 import localforage from 'localforage';
 import { map, always, curry } from 'ramda';
-import { isArray, returnArray, toArray, returnKeyValue } from '../util/index.js';
+import { isArray, returnArray, toArray, returnKeyValue } from './util.js';
 import { pickProperties, findInStore, saveSingle, getDbItems, updateAllItems, patchAllItems, removeAllItems } from './operations.js';
 
 const store = curry((localforage, name) => localforage.createInstance({ name: name || 'You-are-lost' }));
