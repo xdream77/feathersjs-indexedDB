@@ -12,7 +12,7 @@ const local = makeLocalServices(['messages', 'users']);
     .then(console.log); */
 
 local.service('messages')
-    .find({ query: {$limit: 2, $skip: 3,  $select: ['hello', 'name'], hello: {$in: ['Thomas']} }})
+    .find({ query: {$limit: 3, $skip: 1,  $select: ['hello', 'name', 'details'], hello: {$in: ['Thomas', 'Andre']} }})
     .then(console.log);
 
 /* local.service('messages')

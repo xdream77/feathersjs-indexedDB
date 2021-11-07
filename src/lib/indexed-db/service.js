@@ -8,13 +8,16 @@
  */
 
 import localforage from 'localforage';
-import { map, always } from 'ramda';
+import { map, always, curry } from 'ramda';
 import { isArray, returnArray, toArray, returnKeyValue } from '../util/index.js';
 import { pickProperties, findInStore, saveSingle, getDbItems, updateAllItems, patchAllItems, removeAllItems } from './operations.js';
+
+const store = curry((localforage, name) => localforage.createInstance({ name: name || 'You-are-lost' }));
+const makeStore = store(localforage);
+
 export default ({ name }) => {
-    const store = localforage.createInstance({
-        name: name || 'You-are-lost'
-    });
+    
+    const store = makeStore(name);
     
     return {
         get: (id, { $select = [] }) =>

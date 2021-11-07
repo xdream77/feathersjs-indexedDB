@@ -9,7 +9,7 @@
  */
 
 import { nanoid } from 'nanoid';
-import { curry, mergeDeepRight, pick, isEmpty, always, assoc } from 'ramda';
+import { curry, mergeDeepRight, pick, isEmpty, always, assoc, __ } from 'ramda';
 import { toArray, returnKeyValue } from '../util/index.js';
 import { sorter, AdapterService } from '@feathersjs/adapter-commons';
 import sift from 'sift';
@@ -34,13 +34,14 @@ const resultObj = filters => ({
 });
 
 const applyFilters = curry((filters, result) => {
-    Object.entries(filterFn)
+    const data = Object.entries(filterFn)
         .filter(([key]) => filters[key])
-        .forEach(([key,value]) => {
-            result.data = value(result.data, filters[key]);        
-        });
-    return result;
-});
+        .reduce((data, [key,value]) => value(data, filters[key]), result.data);
+    
+    return assoc('data', data, result);
+}
+    
+);
 
 export const findInStore = (store, params) => {
     const { query, filters } = adapter.filterQuery(params);
@@ -55,14 +56,13 @@ export const findInStore = (store, params) => {
         .then(always(result))
         .then(setResultsTotal)
         .then(applyFilters(filters));
+        
 };
  
 export const saveSingle = curry((key = nanoid(), store, item) =>
     store.setItem(key, item)
         .then(returnKeyValue(key))
 );
- 
- 
 
 export const pickProperties = curry((selection, data) => 
     isEmpty(selection) 
