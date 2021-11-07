@@ -9,12 +9,12 @@
  */
 
 import { nanoid } from 'nanoid';
-import { curry, mergeDeepRight, pick, isEmpty, always, assoc } from 'ramda';
-import { toArray, returnKeyValue } from '../util/index.js';
+import { curry, mergeDeepRight, pick, isEmpty, always, assoc, complement } from 'ramda';
+import { toArray, returnKeyValue, isArray } from '../util/index.js';
 import { sorter, AdapterService } from '@feathersjs/adapter-commons';
 import sift from 'sift';
  
-export const adapter = new AdapterService();
+const adapter = new AdapterService();
 
 const setResultsTotal = result => assoc('total', result.data.length, result);
 const removeItem = curry((store, { id }) => store.removeItem(id));
@@ -23,7 +23,7 @@ const filterFn = {
     $sort  : (data, value) => data.sort(sorter(value)),
     $skip  : (data, value) => data.slice(value),
     $limit : (data, value) => data.slice(0, value),
-    $select: (data, value) => data.map(pick(value))
+    $select: (data, value) => data.map(pickProperties(value))
 };
 
 const resultObj = ({ $limit, $skip }) => ({
@@ -63,9 +63,9 @@ export const saveSingle = curry((key = nanoid(), store, item) =>
 );
 
 export const pickProperties = curry((selection, data) => 
-    isEmpty(selection) 
-        ? data 
-        : pick(selection, data)
+    isArray(selection) && !isEmpty(selection)
+        ? pick(selection, data) 
+        : data
 );
 
 export const removeAllItems = curry((store, items) => 

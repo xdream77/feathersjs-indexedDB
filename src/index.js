@@ -11,13 +11,13 @@ const local = makeLocalServices(['messages', 'users']);
     .update('iEfclxSyctAw9-J4ORfrF', {hello: 'Andre', name: 'Kotthaus', details: { age: 44, color: 'white' }})
     .then(console.log); */
 
-/* local.service('messages')
-    .find({ query: {$limit: 3, $skip: 1, hello: {$in: ['Thomas', 'Andre']} }})
-    .then(console.log); */
-
 local.service('messages')
-    .get('ZaIBf', {$select: ['details', 'id']})
+    .find({ query: {$limit: 3, $select: [], $skip: 1, hello: {$in: ['Thomas', 'Andre']} }})
     .then(console.log);
+
+/* local.service('messages')
+    .get('ZaIBf', {$select: ['details', 'id']})
+    .then(console.log); */
 
 /* local.service('messages')
     .create([
