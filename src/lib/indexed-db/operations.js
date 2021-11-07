@@ -9,7 +9,7 @@
  */
 
 import { nanoid } from 'nanoid';
-import { curry, mergeDeepRight, pick, isEmpty, always, assoc, __ } from 'ramda';
+import { curry, mergeDeepRight, pick, isEmpty, always, assoc } from 'ramda';
 import { toArray, returnKeyValue } from '../util/index.js';
 import { sorter, AdapterService } from '@feathersjs/adapter-commons';
 import sift from 'sift';
@@ -69,15 +69,15 @@ export const pickProperties = curry((selection, data) =>
 );
 
 export const removeAllItems = curry((store, items) => 
-    Promise.all(items.map(item => removeItem(store, item))).then(() => items)
+    Promise.all(items.data.map(item => removeItem(store, item))).then(() => items)
 );
 
 export const updateAllItems = curry((data, store, items) =>
-    Promise.all(items.map(item => saveSingle(item.id, store, data)))
+    Promise.all(items.data.map(item => saveSingle(item.id, store, data)))
 );
 
 export const patchAllItems = curry((data, store, items) => 
-    Promise.all(items.map(({id, ...item}) => saveSingle(id, store, mergeDeepRight(item, data))))
+    Promise.all(items.data.map(({id, ...item}) => saveSingle(id, store, mergeDeepRight(item, data))))
 );
  
 export const getDbItems = (id, params, store) => 
