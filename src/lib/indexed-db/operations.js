@@ -9,7 +9,7 @@
  */
 
 import { nanoid } from 'nanoid';
-import { curry, mergeDeepRight, pick, isEmpty, always, assoc, complement } from 'ramda';
+import { curry, mergeDeepRight, pick, isEmpty, always, assoc } from 'ramda';
 import { toArray, returnKeyValue, isArray } from '../util/index.js';
 import { sorter, AdapterService } from '@feathersjs/adapter-commons';
 import sift from 'sift';
