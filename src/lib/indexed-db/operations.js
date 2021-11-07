@@ -26,10 +26,10 @@ const filterFn = {
     $select: (data, value) => data.map(pick(value))
 };
 
-const resultObj = filters => ({
+const resultObj = ({ $limit, $skip }) => ({
     total: 0,
-    limit: filters.$limit || 0,
-    skip : filters.$skip || 0,
+    limit: $limit || 0,
+    skip : $skip || 0,
     data : []
 });
 
@@ -39,9 +39,7 @@ const applyFilters = curry((filters, result) => {
         .reduce((data, [key,value]) => value(data, filters[key]), result.data);
     
     return assoc('data', data, result);
-}
-    
-);
+});
 
 export const findInStore = (store, params) => {
     const { query, filters } = adapter.filterQuery(params);
