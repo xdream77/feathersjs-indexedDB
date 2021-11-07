@@ -1,6 +1,8 @@
 import { makeLocalServices } from './lib/index.js';
 
 const local = makeLocalServices(['messages', 'users']);
+
+
 //console.log(local[0]);
 
 /* local.service('messages')
