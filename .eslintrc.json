@@ -1,0 +1,46 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "jest": true
+    },
+    "globals": {
+        "app" : true,
+        "globalThis" : true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            "warn",
+            4
+        ],
+        "no-console": "off",
+        "no-unused-vars": "warn",
+        "key-spacing": [
+            "warn",
+            {
+                "align": "colon"
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "warn",
+            "always"
+        ],
+        "quote-props": [
+            "warn",
+            "as-needed"
+        ]
+    }
+}
