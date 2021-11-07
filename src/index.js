@@ -33,5 +33,10 @@ const local = makeLocalServices(['messages', 'users']);
 
 
 local.service('messages')
-    .patch(null, { name: 'PATTY', details: { color: 'red', box: 'bordee' }}, { query: {$limit: 3, $skip: 1, hello: {$in: ['Thomas', 'Andre']} }})
-    .then(console.log);
+    .patch(null, { name: 'PATTY', details: { color: 'red', box: 'bordee' }}, { query: {$limit: 3, $skip: 1, hello: {$in: ['Thomas', 'Andre']} }});
+    
+local.service('messages').on('patched', (data) => {
+    console.log('Patched Data: ', data);
+});
+
+
