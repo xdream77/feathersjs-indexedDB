@@ -77,5 +77,4 @@ describe('util', () => {
         expect(console.trace.mock.calls.length).toBe(1);
         expect(console.trace.mock.calls[0][0]).toStrictEqual({ hello: 'world', id: 'overwrite me' });
     });
-
 });
