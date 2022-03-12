@@ -16,7 +16,7 @@ describe('index', () => {
         const service = makeLocalServices(['testDB', 'testDB1']);
         const testDB = service.service('testDB');
         const testDB1 = service.service('testDB1');   
-
+        
         expect(testDB).toBeTruthy();
         expect(testDB).toHaveProperty('get');
         expect(testDB1).toBeTruthy();

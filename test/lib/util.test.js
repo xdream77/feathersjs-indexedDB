@@ -1,4 +1,3 @@
-import { is } from 'ramda';
 import { toEmptyResult, toArray, logErrorReturnEmpty, isArray, returnKeyValue } from './../../lib/util.js';
 
 
