@@ -13,6 +13,19 @@ makeStore.mockImplementation(
     })
 );
 
-export default (service) => 
+const mockData = [
+    { id: 'awesome-0', first: 'bob', last: 'smith', age: 33 },
+    { id: 'awesome-1', first: 'anna', last: 'hope', age: 34 },
+    { id: 'awesome-2', first: 'john', last: 'miller', age: 33 },
+    { id: 'awesome-3', first: 'andrew', last: 'stinson', age: 26 },
+    { id: 'awesome-4', first: 'marc', last: 'winger', age: 69 },
+    { id: 'awesome-5', first: 'tim', last: 'miller', age: 55 },
+];
+
+export const cleanup = (service) => 
     service.find()
         .then(({ data }) => Promise.all(data.map( item => service.remove(item.id) )));
+
+
+export const fill = (service) => service.create(mockData);
+

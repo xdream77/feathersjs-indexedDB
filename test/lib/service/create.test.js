@@ -1,7 +1,5 @@
-import cleanup from './../../test-database.js';
+import { cleanup } from './../../test-database.js';
 import service from './../../../lib/service.js';
-
-
 
 describe('service', () => {
 
