@@ -24,7 +24,6 @@ describe('service', () => {
                     .then(() => {
                         db.get('awesome-3')
                             .then(obj => {
-                                console.log(obj);
                                 expect(obj).toStrictEqual({ id: 'awesome-3' });
                                 cleanup(db).then(() => done());
                             });
@@ -81,7 +80,4 @@ describe('service', () => {
             })
             .catch(done);
     });
-
-   
-
 });
