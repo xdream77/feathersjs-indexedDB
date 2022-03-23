@@ -39,7 +39,7 @@ describe('service', () => {
             .catch(done);
     });
 
-    it('creates multiple values (without ID) in the indexed-db  returns the value', (done) => {
+    it('creates multiple values (without ID) in the indexed-db and returns the value', (done) => {
         expect.assertions(1);
         const db = service('test-db');
 
@@ -58,7 +58,6 @@ describe('service', () => {
                         { hello: 'world2', foo: 'bar2', id: expect.any(String)},   
                     ])
                 );
-                console.log(data);
                 cleanup(db).then(() => done());
             })
             .catch(done);

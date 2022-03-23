@@ -1,7 +1,7 @@
 import { cleanup, fill } from './../../test-database.js';
 import service from './../../../lib/service.js';
 
-describe('service', () => {
+describe('service-find', () => {
 
     it('gets a single value by query and returns a feathers conform response', (done) => {
         expect.assertions(1);
