@@ -1,6 +1,6 @@
 {
-  "name": "feathers-indexeddb",
-  "version": "0.0.0",
+  "name": "@wgd/feathersjs-indexeddb",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
