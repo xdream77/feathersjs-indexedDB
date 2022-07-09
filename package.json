@@ -2,10 +2,9 @@
   "name": "@wgd/feathersjs-indexeddb",
   "version": "1.0.0",
   "type": "module",
+  "main": "index.js",
+  "description": "Use indexedDB with feathersJS features",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
     "test": "jest"
   },
   "devDependencies": {
@@ -26,5 +25,15 @@
     "nanoid": "^3.1.30",
     "ramda": "^0.28.0",
     "sift": "^16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xdream77/feathersjs-indexedDB.git"
+  },
+  "author": "wGd",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
   }
 }
+
