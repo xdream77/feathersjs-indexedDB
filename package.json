@@ -1,9 +1,10 @@
 {
-  "name": "@wgd/feathersjs-indexeddb",
+  "name": "@xdream77/feathersjs-indexeddb",
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
   "description": "Use indexedDB with feathersJS features",
+  "homepage": "https://github.com/xdream77/feathersjs-indexedDB",
   "scripts": {
     "test": "jest"
   },
@@ -30,7 +31,6 @@
     "type": "git",
     "url": "git+https://github.com/xdream77/feathersjs-indexedDB.git"
   },
-  "author": "wGd",
   "license": "ISC",
   "publishConfig": {
     "access": "public"
